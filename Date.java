@@ -4,13 +4,26 @@ public class Date {
     private int month;
     private int year;
 
-    int getDay(){return this.day;}
-    int getMonth(){return this.month;}
-    int getYear(){return this.year;}
+    int getDay(){
+        return this.day;  
+    }
+
+    int getMonth(){
+        return this.month;
+    }
+
+    int getYear(){
+        return this.year;
+    }
 
     public Date(int day, int month, int year) {
+        if(this.month >= 1 && this.month <= 12)
+            this.month = month;
+
+        if(this.day >= 1 && this.day <= 31)
         this.day = day;
-        this.month = month;
+
+        if(this.year >= 0)
         this.year = year;
     }
 
@@ -60,7 +73,7 @@ public class Date {
         return monthName;
     }
 
-    int getMonthDays() {
+    private int getMonthDays(int numMonth) {
         int monthDays = 0;
 
         switch (this.month) {
@@ -113,10 +126,69 @@ public class Date {
         }
 
     boolean isSameDay(Date another){
+        return this.day == another.getDay();
+    }
+    boolean isSameMonth(Date another){
+        return this.month == another.getMonth();
+    }
+    boolean isSameYear(Date another){
+        return this.year == another.getYear();
+    }
+    boolean isSame(Date another){
         return this.year == another.getYear() && this.month == another.getMonth() && this.day == another.getDay();
     }
+
+    
     public String toString(){
         return this.day + "/" + this.month + "/" + this.year;
+    }
+
+    int getMonthDays(){
+        return getMonthDays(this.month);
+    }
+
+    boolean isMonthCorrect(){
+        boolean correctDays = false;
+        if(day <= this.getMonthDays()){
+            correctDays = true;
+        }
+    }
+    return correctDays;
+
+    String getSeason(){
+        String season = "";
+        switch (this.month){
+            case 1:
+            //Invierno
+            case 2:
+            //Invierno
+            case 3:
+                season = "Invierno";
+            case 4:
+            //Primavera
+            case 5:
+            //Primavera
+            case 6:
+                season = "Primavera";
+            case 7:
+            //Verano
+            case 8:
+            //Verano
+            case 9:
+                season = "Verano";
+            case 10:
+            //Otoño
+            case 11:
+            //Otoño
+            case 12:
+                season "Otoño";
+                break;
+        }
+        return season;
+    }
+
+    public String monthsLeftUntilEndYear(){
+        for()
     }
 
 }
